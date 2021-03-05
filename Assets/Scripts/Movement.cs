@@ -2,9 +2,9 @@
 
 public class Movement : MonoBehaviour
 {
-	[SerializeField] private float _speed = 1f;
-	[SerializeField] private Vector3 _direction1 = Vector3.forward;
-	[SerializeField] private Vector3 _direction2 = Vector3.left;
+	public float Speed = 1f;
+	public Vector3 Direction1 = Vector3.forward;
+	public Vector3 Direction2 = Vector3.left;
 
 	private void Update()
 	{
@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
 
 	private void FixedUpdate()
 	{ 
-		Vector3 velocity = GetDirection() * _speed;
+		Vector3 velocity = GetDirection() * Speed;
 		velocity.y = _rigidbody.velocity.y; // не меняем Y, чтобы гравитация работала
 		_rigidbody.velocity = velocity;
 	}
@@ -27,8 +27,8 @@ public class Movement : MonoBehaviour
 	private Vector3 GetDirection()
 	{
 		if (_directionIndex == 0)
-			return _direction1;
-		return _direction2;
+			return Direction1;
+		return Direction2;
 	}
 
 	private void Awake()
